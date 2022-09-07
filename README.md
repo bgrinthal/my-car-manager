@@ -39,7 +39,7 @@
 <img width="1440" alt="Screen Shot 2022-08-30 at 12 36 54 PM" src="https://user-images.githubusercontent.com/105067005/187492085-7958893f-6aee-4218-8242-0c3686a5462c.png">
 
 
-Command line application that helps a business manage its employee database using Node.js, Inquirer, and MySQL.  User has the ability to view current employees, roles, departments and more as well as add, update, or delete exisitnig entries.
+Command line application that helps a business manage its specs database using Node.js, Inquirer, and MySQL.  User has the ability to view current specss, cars, manufacturers and more as well as add, update, or delete exisitnig entries.
 
 
 For a more indepth video walkthrough, see below:
@@ -72,7 +72,7 @@ Run node index.js in the repository command line and follow prompts
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/bgrinthal/Employee-Tracker.git
+   git clone https://github.com/bgrinthal/specs-Tracker.git
    ```
 2. Install NPM packages
    ```sh
@@ -124,7 +124,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Ben Grinthal - [@bgrinthal](https://github.com/bgrinthal) - bgrinthal@gmail.com
 
-Project Link: [https://github.com/bgrinthal/Employee-Tracker](https://github.com/bgrinthal/Employee-Tracker)
+Project Link: [https://github.com/bgrinthal/specs-Tracker](https://github.com/bgrinthal/specs-Tracker)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

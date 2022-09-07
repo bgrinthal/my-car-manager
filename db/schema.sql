@@ -1,31 +1,33 @@
-DROP DATABASE IF EXISTS tracker_db;
+DROP DATABASE IF EXISTS automotive_db;
 
-CREATE DATABASE tracker_db;
+CREATE DATABASE automotive_db;
 
-USE tracker_db;
+USE automotive_db;
 
-CREATE TABLE department (
+CREATE TABLE manufacturer (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE role (
+CREATE TABLE model (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(30) NOT NULL,
-    salary DECIMAL(10, 2) NOT NULL,
-    department_id INT,
-    FOREIGN KEY (department_id) REFERENCES department(id) 
+    year INT NOT NULL,
+    name VARCHAR(30) NOT NULL,
+    trim VARCHAR(30),
+    price DECIMAL(10, 2) NOT NULL,
+    start_mile, DECIMAL(10, 2) NOT NULL,
+    manufacturer_id INT,
+    FOREIGN KEY (manufacturer_id) REFERENCES manufacturer(id) 
     ON DELETE CASCADE
 );
 
-CREATE TABLE employee (
+CREATE TABLE specs (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(30) NOT NULL,
-    last_name VARCHAR(30) NOT NULL,
-    role_id INT NOT NULL,
-    manager_id INT NULL,
-    FOREIGN KEY (role_id) REFERENCES role(id)
-    ON DELETE CASCADE,
-    FOREIGN KEY (manager_id) REFERENCES employee(id) 
+    color VARCHAR(30) NOT NULL,
+    trans VARCHAR(30) NOT NULL,
+    sold DECIMAL(10, 2),
+    end_mile INT,
+    model_id INT NOT NULL,
+    FOREIGN KEY (model_id) REFERENCES model(id)
     ON DELETE CASCADE
 );

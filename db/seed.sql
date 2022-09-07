@@ -1,28 +1,18 @@
-INSERT INTO department (name)
+INSERT INTO manufacturer (name)
 VALUES
-    ('Sales'),
-    ('Engineering'),
-    ('Finance'),
-    ('Legal');
+    ('Toyota'),
+    ('BMW');
 
-INSERT INTO role (title, salary, department_id)
+INSERT INTO model (year, name, trim, price, start_mile, manufacturer_id)
 VALUES
-    ('Sales Lead', 100000, 1),
-    ('Salesperson', 80000, 1),
-    ('Lead Engineer', 150000, 2),
-    ('Software Engineer', 120000, 2),
-    ('Account Manager', 160000, 3),
-    ('Accountant', 125000, 3),
-    ('Legal Team Lead', 250000, 4),
-    ('Lawyer', 190000, 4);
+    (1992, 'Paseo', NULL, 1500, 152000, 1),
+    (2004, '330', 'ci', 6000, 133000, 2),
+    (2004, '330', 'i', 5500, 122000, 2),
+    (2016, '228', 'xi', 22000, 22000, 2);
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
+INSERT INTO specs (color, transmission, end_mileage, model_id)
 VALUES
-    ('John', 'Doe', 1, NULL),
-    ('Mike', 'Chan', 2, 1),
-    ('Ashley', 'Rodriguez', 3, NULL),
-    ('Kevin', 'Tupik', 4, 2),
-    ('Kunal', 'Singh', 5, NULL),
-    ('Malia', 'Brown', 6, 2),
-    ('Sarah', 'Lourd', 7, NULL),
-    ('Tom', 'Allen', 8, 4);
+    ('black', 'manual', 600, 174000, 1),
+    ('black', 'manual', 3500, 135000, 2),
+    ('metalic-blue', 'manual', 3300, 144000, 3),
+    ('blue', 'automatic', NULL, NULL, 4);
