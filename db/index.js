@@ -15,19 +15,8 @@ class DB {
         );
     }
     //  method to add new employees using mysql commands
-    addEmployee(first_name, last_name, role_id, manager_id) {
-        //checks if employee has no manager ==> manager_id = NULL
-        if(manager_id === 0){
-            return this.connection.promise().query(
-                `INSERT INTO employee (first_name, last_name, role_id, manager_id)
-                VALUES ('${first_name}', '${last_name}', '${role_id}', NULL)`
-            );
-        } else {
-            return this.connection.promise().query(
-                `INSERT INTO employee (first_name, last_name, role_id, manager_id)
-                VALUES ('${first_name}', '${last_name}', '${role_id}', '${manager_id}')`
-            );
-        }
+    viewNewCar() {
+        
         
     }
 

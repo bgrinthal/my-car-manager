@@ -20,7 +20,7 @@ function init() {
                     message: 'Please choose an option: ',
                     choices: [
                         "View all cars",
-                        "View all roles",
+                        "Add a car",
                         "View all employees",
                         "Add a department",
                         "Add a role",
@@ -38,8 +38,8 @@ function init() {
         .then((answer) => {
             if (answer.start === "View all cars") {
                 viewCars();
-            } else if (answer.start === "View all roles") {
-                viewRo();
+            } else if (answer.start === "Add a car") {
+                addCar();
             } else if (answer.start === "View all employees") {
                 viewEmp();
             } else if (answer.start === "Add a department") {
@@ -70,6 +70,26 @@ function viewCars() {
         .then(() => {
             init();
         })
+}
+
+function addCar() {
+    let manufacturers = [];
+    connection.query(`SELECT * FROM manufacturer`, (err, data) => {
+        if (err) throw err;
+
+        for (let i = 0; i < data.length; i++) {
+            manufacturers.push(data[i].name)
+        }
+        inquirer
+            .prompt([
+                {
+                    type: 'list',
+                    name: 'start',
+                    message: 'Please choose an option: ',
+                    choices: ['New manufacturer'].concat(manufacturers)
+                },
+            ])
+    })
 }
 
 // function to exit application
