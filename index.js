@@ -36,8 +36,8 @@ function init() {
 
         )
         .then((answer) => {
-            if (answer.start === "View all departments") {
-                viewDept();
+            if (answer.start === "View all cars") {
+                viewCars();
             } else if (answer.start === "View all roles") {
                 viewRo();
             } else if (answer.start === "View all employees") {
@@ -62,7 +62,9 @@ function init() {
         });
 }
 
-
+function viewCars() {
+    db.
+}
 
 // function to exit application
 function exit() {

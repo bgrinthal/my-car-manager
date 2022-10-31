@@ -7,13 +7,11 @@ class DB {
         this.connection = connection
     }
     //  method to find all employees using mysql commands
-    viewEmployees() {
+    viewAllCars() {
         return this.connection.promise().query(
-            `SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name, role.salary, CONCAT(emp.first_name, ' ' , emp.last_name) AS manager
-            FROM employee 
-            LEFT JOIN role ON role.id = employee.role_id 
-            LEFT JOIN department ON department.id = role.department_id
-            LEFT JOIN employee AS emp ON emp.id = employee.manager_id`
+            `SELECT model.id, model.year, manufacturer.name, model.name, model.trim
+            FROM model
+            LEFT JOIN manufacturer ON manufacturer.id = model.manufacturer_id`
         );
     }
     //  method to add new employees using mysql commands
