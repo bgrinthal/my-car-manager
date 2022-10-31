@@ -7,7 +7,7 @@ class DB {
         this.connection = connection
     }
     //  method to find all employees using mysql commands
-    viewAllCars() {
+    viewMyCars() {
         return this.connection.promise().query(
             `SELECT model.id, model.year, manufacturer.name, model.name, model.trim
             FROM model

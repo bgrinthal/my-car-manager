@@ -19,7 +19,7 @@ function init() {
                     name: 'start',
                     message: 'Please choose an option: ',
                     choices: [
-                        "View all departments",
+                        "View all cars",
                         "View all roles",
                         "View all employees",
                         "Add a department",
@@ -63,7 +63,13 @@ function init() {
 }
 
 function viewCars() {
-    db.
+    db.viewMyCars()
+        .then(([result]) => {
+            console.table(result);
+        })
+        .then(() => {
+            init();
+        })
 }
 
 // function to exit application
