@@ -15,9 +15,11 @@ class DB {
         );
     }
     //  method to add new employees using mysql commands
-    viewNewCar() {
-        
-        
+    addNewManufacturer(name) {
+        return this.connection.promise.query(
+            `INSERT INTO manufacturer (name)
+            VALUES ('${name}')`
+        );
     }
 
     //  method to update employee roles using mysql commands

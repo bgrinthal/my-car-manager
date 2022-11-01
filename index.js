@@ -73,6 +73,10 @@ function viewCars() {
 }
 
 function addCar() {
+    addManu();
+}
+
+function addManu() {
     let manufacturers = [];
     connection.query(`SELECT * FROM manufacturer`, (err, data) => {
         if (err) throw err;
@@ -84,12 +88,102 @@ function addCar() {
             .prompt([
                 {
                     type: 'list',
-                    name: 'start',
+                    name: 'manufacturer',
                     message: 'Please choose an option: ',
                     choices: ['New manufacturer'].concat(manufacturers)
-                },
+                }
             ])
+            .then((answer) => {
+                if (answer.manufacturer === 'New manufacturer') {
+                    console.log('Add new manufacturer')
+                    inquirer
+                        .prompt([
+                            {
+                                type: 'input',
+                                name: 'newManufacturer',
+                                message: 'What is the manufacturer of the car?',
+                            }
+                        ])
+                        .then((newManu) => {
+                            db.addNewManufacturer(newManu.newManufacturer)
+                            console.log(`${newManu.newManufacturer} added!`)
+                        })
+                } else {
+                    db.addNewManufacturer(answer.manufacturer)
+                }
+                addModel();
+            })
     })
+}
+
+function addModel() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'year',
+                message: 'What is the year of the car?',
+            },
+            {
+                type: 'input',
+                name: 'model',
+                message: 'What is the model of the car?',
+            },
+            {
+                type: 'input',
+                name: 'trim',
+                message: 'What is the trim type of the car? Enter NULL if not applicable',
+            },
+            {
+                type: 'input',
+                name: 'package',
+                message: 'Does the car have any additional packages? Enter NULL if not applicable',
+            }
+        ])
+        .then(() => {
+
+            addSpecs();
+        })
+}
+
+function addSpecs() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'color',
+                message: 'What color is the car?',
+            },
+            {
+                type: 'list',
+                name: 'transmission',
+                message: 'Transimission type: ',
+                choices: ['Automatic'].concat('Manual')
+            },
+            {
+                type: 'input',
+                name: 'bought',
+                message: 'How much was the car purchased for?',
+            },
+            {
+                type: 'input',
+                name: 'startMiles',
+                message: 'How mamy miles on car when purchased?',
+            },
+            {
+                type: 'input',
+                name: 'sold',
+                message: 'How much was the car sold for? Enter NULL if not applicable',
+            },
+            {
+                type: 'input',
+                name: 'endMiles',
+                message: 'How mamy miles on car when sold? Enter NULL if not applicable',
+            }
+        ])
+        .then(() => {
+
+        })
 }
 
 // function to exit application
