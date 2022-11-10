@@ -14,9 +14,18 @@ class DB {
             LEFT JOIN manufacturer ON manufacturer.id = model.manufacturer_id`
         );
     }
+    //  method to find all employees using mysql commands
+    viewMyFullCars() {
+        return this.connection.promise().query(
+            `SELECT model.id, specs.color, model.year, manufacturer.name, model.name, model.trim, model.package, specs.transmission
+            FROM model
+            LEFT JOIN manufacturer ON manufacturer.id = model.manufacturer_id
+            LEFT JOIN specs ON specs.id = model.id`
+        );
+    }
     //  method to add new employees using mysql commands
     addNewManufacturer(name) {
-        return this.connection.promise.query(
+        return this.connection.promise().query(
             `INSERT INTO manufacturer (name)
             VALUES ('${name}')`
         );

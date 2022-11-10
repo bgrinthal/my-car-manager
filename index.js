@@ -20,6 +20,7 @@ function init() {
                     message: 'Please choose an option: ',
                     choices: [
                         "View all cars",
+                        "View full car specs",
                         "Add a car",
                         "View all employees",
                         "Add a department",
@@ -38,6 +39,8 @@ function init() {
         .then((answer) => {
             if (answer.start === "View all cars") {
                 viewCars();
+            } else if (answer.start === "View full car specs") {
+                viewFullCars();
             } else if (answer.start === "Add a car") {
                 addCar();
             } else if (answer.start === "View all employees") {
@@ -64,6 +67,16 @@ function init() {
 
 function viewCars() {
     db.viewMyCars()
+        .then(([result]) => {
+            console.table(result);
+        })
+        .then(() => {
+            init();
+        })
+}
+
+function viewFullCars() {
+    db.viewMyFullCars()
         .then(([result]) => {
             console.table(result);
         })
@@ -140,7 +153,7 @@ function addModel() {
                 message: 'Does the car have any additional packages? Enter NULL if not applicable',
             }
         ])
-        .then(() => {
+        .then((year, model, trim, package) => {
 
             addSpecs();
         })
