@@ -9,7 +9,7 @@ class DB {
     //  method to find all employees using mysql commands
     viewMyCars() {
         return this.connection.promise().query(
-            `SELECT model.id, model.year, manufacturer.name, model.name, model.trim
+            `SELECT model.id, model.year, manufacturer.name AS make, model.name AS model, model.trim
             FROM model
             LEFT JOIN manufacturer ON manufacturer.id = model.manufacturer_id`
         );
@@ -17,7 +17,16 @@ class DB {
     //  method to find all employees using mysql commands
     viewMyFullCars() {
         return this.connection.promise().query(
-            `SELECT model.id, specs.color, model.year, manufacturer.name, model.name, model.trim, model.package, specs.transmission
+            `SELECT model.id, specs.color, model.year, manufacturer.name AS make, model.name AS model, model.trim, model.package, specs.transmission
+            FROM model
+            LEFT JOIN manufacturer ON manufacturer.id = model.manufacturer_id
+            LEFT JOIN specs ON specs.id = model.id`
+        );
+    }
+    //  method to find all employees using mysql commands
+    viewMyCarInfo() {
+        return this.connection.promise().query(
+            `SELECT model.id, model.year, manufacturer.name AS make, model.name AS model, specs.start_mile AS start_mileage, specs.end_mileage, specs.bought AS bought_price, specs.sold AS sold_price
             FROM model
             LEFT JOIN manufacturer ON manufacturer.id = model.manufacturer_id
             LEFT JOIN specs ON specs.id = model.id`

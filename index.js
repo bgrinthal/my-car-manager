@@ -21,6 +21,7 @@ function init() {
                     choices: [
                         "View all cars",
                         "View full car specs",
+                        "View bought/sold car info",
                         "Add a car",
                         "View all employees",
                         "Add a department",
@@ -41,6 +42,8 @@ function init() {
                 viewCars();
             } else if (answer.start === "View full car specs") {
                 viewFullCars();
+            } else if (answer.start === "View bought/sold car info") {
+                viewCarsInfo();
             } else if (answer.start === "Add a car") {
                 addCar();
             } else if (answer.start === "View all employees") {
@@ -77,6 +80,16 @@ function viewCars() {
 
 function viewFullCars() {
     db.viewMyFullCars()
+        .then(([result]) => {
+            console.table(result);
+        })
+        .then(() => {
+            init();
+        })
+}
+
+function viewCarsInfo() {
+    db.viewMyCarInfo()
         .then(([result]) => {
             console.table(result);
         })
